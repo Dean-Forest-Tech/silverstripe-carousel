@@ -25,7 +25,7 @@
     },
 	"require": {
 		"silverstripe/cms": "^4 || ^5",
-        "symbiote/silverstripe-gridfieldextensions": "^3",
+        "symbiote/silverstripe-gridfieldextensions": "^3 || ^4",
 		"jonom/focuspoint": "^4 || ^5",
 		"heyday/silverstripe-responsive-images": "^3",
 		"gorriecoe/silverstripe-linkfield": "^1"
