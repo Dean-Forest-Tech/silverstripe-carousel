@@ -23,3 +23,8 @@
 ## 2.2.0
 
 * Re-added support for linkable/link module
+
+## 2.3.0
+
+* SS5 support
+* Add config to disable requirements
