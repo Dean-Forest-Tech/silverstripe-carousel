@@ -5,14 +5,15 @@ namespace DFT\SilverStripe\Carousel\Extensions;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\GridField\GridField;
-use Heyday\ResponsiveImages\ResponsiveImageExtension;
 use DFT\SilverStripe\Carousel\Model\CarouselSlide;
+use Heyday\ResponsiveImages\ResponsiveImageExtension;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
@@ -30,6 +31,10 @@ class CarouselPage extends DataExtension
 
     private static $has_many = [
         'Slides' => CarouselSlide::class
+    ];
+
+    private static $casting = [
+        'CarouselSlides' => 'HTMLText'
     ];
 
     private static $defaults = [
@@ -118,17 +123,19 @@ class CarouselPage extends DataExtension
         }
     }
 
-    public function CarouselSlides() {
-        return $this
-            ->owner
-            ->renderWith(
-                'DFT\SilverStripe\Carousel\Includes\CarouselSlides',
-                [
-                    'Slides' => $this->owner->Slides(),
-                    'Interval' => $this->owner->CarouselInterval ? $this->owner->CarouselInterval : 3000,
-                    'ShowIndicators' => $this->owner->CarouselShowIndicators,
-                    'ShowControls' => $this->owner->CarouselShowControls
-                ]
-            );
+    public function CarouselSlides(): string
+    {
+        /** @var SiteTree */
+        $owner = $this->getOwner();
+
+        return $owner->renderWith(
+            'DFT\SilverStripe\Carousel\Includes\CarouselSlides',
+            [
+                'Slides' => $owner->Slides(),
+                'Interval' => $owner->CarouselInterval ? $owner->CarouselInterval : 3000,
+                'ShowIndicators' => $owner->CarouselShowIndicators,
+                'ShowControls' => $owner->CarouselShowControls
+            ]
+        );
     }
 }
