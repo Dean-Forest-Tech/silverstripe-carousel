@@ -17,17 +17,13 @@ to your SilverStripe website.
 
 Either via composer:
 
-    composer require "i-lateral/silverstripe-carousel"
-
-Or manually by by downloading and adding to:
-
-    [silverstripe-root]/carousel
+    composer require "dft/silverstripe-carousel"
 
 Then run:
 
     ./vendor/bin/sake dev/build flush=1
 
-or (from yuor browser):
+or (from your browser):
 
     http://yoursiteurl.com/dev/build/
 

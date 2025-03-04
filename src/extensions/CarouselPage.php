@@ -16,12 +16,6 @@ use DFT\SilverStripe\Carousel\Model\CarouselSlide;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
-/**
- * Extension to all page objects that add carousel slide relationships
- * 
- * @author i-lateral (http://www.i-lateral.com)
- * @package carousel
- */
 class CarouselPage extends DataExtension
 {
     private static $db = [
