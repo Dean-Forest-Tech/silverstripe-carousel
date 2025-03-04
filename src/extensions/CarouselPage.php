@@ -18,6 +18,8 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
 class CarouselPage extends DataExtension
 {
+    private static $extra_requirements = true;
+
     private static $db = [
         'ShowCarousel'  => 'Boolean',
         "CarouselShowIndicators" => "Boolean",
@@ -34,6 +36,14 @@ class CarouselPage extends DataExtension
         'CarouselProfile' => 'ShortCarousel',
         'CarouselInterval' => 3000,
     ];
+
+    public function shouldAddCarouselRequireExtras()
+    {
+        $require = Config::inst()
+            ->get(static::class, 'extra_requirements');
+        
+        return (bool) $require;
+    }
 
     public function updateCMSFields(FieldList $fields)
     {

@@ -1,9 +1,11 @@
+<% if $shouldAddCarouselRequireExtras %>
 <% require css("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css") %>
 <% require css("dft/silverstripe-carousel: client/dist/styles/carousel.css") %>
 
 <% require javascript("https://code.jquery.com/jquery-3.2.1.slim.min.js") %>
 <% require javascript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js") %>
 <% require javascript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js") %>
+<% end_if %>
 
 <% if $Slides.exists %>
     <div id="CarouselSlider" class="carousel slide" data-interval="{$Interval}" data-ride="carousel">
