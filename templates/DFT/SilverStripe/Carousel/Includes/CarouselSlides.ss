@@ -7,9 +7,9 @@
 <% require javascript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js") %>
 <% end_if %>
 
-<% if $Slides.exists %>
+<% if $ShowCarousel && $Slides.exists %>
     <div id="CarouselSlider" class="carousel slide" data-interval="{$Interval}" data-ride="carousel">
-        
+
         <% if $ShowIndicators = 1 %>
             <ol class="carousel-indicators">
                 <% loop $Slides %>
@@ -26,7 +26,6 @@
             <% loop $Slides %>
                 <div class="carousel-item <% if $First || $IsFirst %>active<% end_if %>">
                     {$RenderedImage}
-
                     <% if Title %>
                         <div class="carousel-caption text-center d-block w-100 slide-content">
 							<% if $Link.LinkURL %>
@@ -51,7 +50,6 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only"><%t Carousel.Prev "Prev" %></span>
             </a>
-
             <a class="carousel-control-next" href='#CarouselSlider' role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only"><%t Carousel.Next "Next" %></span>
