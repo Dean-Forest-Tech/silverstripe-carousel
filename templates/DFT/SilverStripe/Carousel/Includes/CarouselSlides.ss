@@ -16,7 +16,7 @@
                     <li
                         data-target="#CarouselSlider"
                         data-slide-to="$Pos(0)"
-                        <% if $First %>class="active"<% end_if %>
+                        <% if $First || $IsFirst %>class="active"<% end_if %>
                     ></li>
                 <% end_loop %>
             </ol>
@@ -24,10 +24,11 @@
 
         <div class="carousel-inner">
             <% loop $Slides %>
-                <div class="carousel-item <% if $First %>active<% end_if %>">
-                    $RenderedImage
+                <div class="carousel-item <% if $First || $IsFirst %>active<% end_if %>">
+                    {$RenderedImage}
+
                     <% if Title %>
-                        <div class="carousel-caption text-center d-none d-md-block slide-content">
+                        <div class="carousel-caption text-center d-block w-100 slide-content">
 							<% if $Link.LinkURL %>
 								<p class="h2"><strong>
                                     <a href="$Link.LinkURL" $Link.TargetAttr>
